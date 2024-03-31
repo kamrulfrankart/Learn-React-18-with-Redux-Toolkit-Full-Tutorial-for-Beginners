@@ -3,23 +3,50 @@ import ReactDOM  from "react-dom/client"
 
 import './index.css'
 
+const firstBook = {
+   author : 'Dav Pilkey',
+   title : 'Dog Man: The Scarlet Shedder: A Graphic Novel',
+   img : './images/book-1.jpg'  
+};
+
+
+const secondBook = {
+  author : 'Jonathan Haidt',
+  title : 'The Anxious Generation: How the Great Rewiring of Childhood Is Causing an Epidemic of Mental Illness',
+  img : './images/book-2.jpg'  
+};
+
+
 const BookList = () => {
   return (
   <section className="booklist">
-    <Book/>
-    <Book/>
-    <Book/>
+    <Book
+     author={firstBook.author} 
+     title={firstBook.title} 
+     img = {firstBook.img}
+     >     
+     <p>Our canine superhero returns in DOG MAN: THE SCARLET SHEDDER, the suspenseful and hilarious twelfth graphic novel in the #1 worldwide bestselling series by award-winning author and illustrator Dav Pilkey!</p>
+     <button>click</button>
+     </Book>
+    <Book 
+    author={secondBook.author}
+     title={secondBook.title} 
+     img = {secondBook.img}
+     />
   </section>
   );
 };
 
-const Book = () => {
+
+const Book = (props) => {
+  const {img, title, author, children} = props;
+  console.log(props);
   return (
   <article  className="book">
-      <img src="https://images-na.ssl-images-amazon.com/images/I/713-J3tw46L._AC_UL300_SR300,200_.jpg"
-        alt="Dog Man"/>
-      <h2>Dog Man: The Scarlet Shedder: A Graphic Novel</h2>
-      <h4> Dav Pilkey</h4>
+      <img src= {img} alt = {title}/>
+      <h2>{title}</h2>
+      <h4>{author.toUpperCase()}</h4>
+      {children}
   </article>
   );
 };
